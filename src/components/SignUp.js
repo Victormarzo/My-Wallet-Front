@@ -9,8 +9,23 @@ export default function SignUp(){
     const[password,setPassword]=useState('');
     const[name,setName]=useState('');
     const[repeatPassword,setRepeatPassword]=useState('');
+
+    function Sign(e){
+        e.preventDefault();
+        if(password!=repeatPassword){
+            alert ("As senhas não coincidem")
+            setPassword('');
+            setRepeatPassword('')
+        }
+        let body={email,password,name}
+        console.log(body)
+    }   
+    
+
+
+
 return(
-    <>
+    <form onSubmit={Sign}>
         <Center>
             <LogoWrapper src={Logo} alt="logo">
         </LogoWrapper>
@@ -46,7 +61,7 @@ return(
             <Link to={'/'}><P>Já tem uma conta? Entre agora!</P></Link>
         </Center>
         
-    </>
+    </form>
 )
 
 }

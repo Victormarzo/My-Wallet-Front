@@ -8,7 +8,13 @@ export default function Login(){
     const[email,setEmail]=useState('');
     const[password,setPassword]=useState('');
     
-    return(<>
+function Log(e){
+    e.preventDefault();
+    let body={email,password}
+    console.log(body)
+}
+
+    return(<form onSubmit={Log}>
         <Center>
             <LogoWrapper src={Logo} alt="logo"></LogoWrapper>
         
@@ -31,7 +37,7 @@ export default function Login(){
            <Link to={'/signup'}><P>Primeira vez? Cadastre-se!</P></Link> 
         </Center>
         
-    </>)
+    </form>)
 }
 const LogoWrapper=styled.img`
     margin-bottom: 25px;

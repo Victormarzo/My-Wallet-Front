@@ -50,6 +50,7 @@ function Transaction({obj}){
 
     </TransactionPa>)
 }
+
 const TransactionP=styled.p`
     font-family: 'Raleway';
     font-style: normal;
