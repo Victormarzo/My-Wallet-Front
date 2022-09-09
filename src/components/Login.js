@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Input,Button,P,Center} from "./Components";
 import Logo from "../assets/img/Logo.svg";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function Login(){
     const[email,setEmail]=useState('');
@@ -27,7 +28,7 @@ export default function Login(){
         ></Input>
         <Button>Entrar</Button>
         
-            <P>Primeira vez? Cadastre-se!</P>
+           <Link to={'/signup'}><P>Primeira vez? Cadastre-se!</P></Link> 
         </Center>
         
     </>)

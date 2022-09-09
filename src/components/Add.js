@@ -23,6 +23,7 @@ export default function Add({type=true}){
         <Input 
             placeholder="Valor"
             required
+             min="0.00" max="10000.00" step="0.01" 
             value={value}    
             onChange={e=>setValue(e.target.value)}></Input>
         <Input 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Input,Button,P,Center} from "./Components";
 import Logo from "../assets/img/Logo.svg";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 
 export default function SignUp(){
     const[email,setEmail]=useState('');
@@ -43,7 +43,7 @@ return(
         ></Input>
         <Button>Cadastrar</Button>
         
-            <P>Já tem uma conta? Entre agora!</P>
+            <Link to={'/'}><P>Já tem uma conta? Entre agora!</P></Link>
         </Center>
         
     </>

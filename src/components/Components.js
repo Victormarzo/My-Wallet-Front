@@ -31,12 +31,14 @@ function BigButton({children}){
     )
     
 }
-function Side({children}){
+function Side({children,color}){
     return(
-    <SideWrapper>{children}</SideWrapper>
+    <SideWrapper color={color}>{children}</SideWrapper>
     )
 }
-function Transaction({operation,description,value,date}){
+function Transaction({obj}){
+    let {operation,description,value,date}=obj
+
     return(
     <TransactionPa>
         <div>
@@ -58,7 +60,7 @@ const TransactionP=styled.p`
     color:${(props)=>
         props.color?(props.color):(props.type?("#03AC00"):("#C70000"))
     };
-    margin-right: 12px;
+    
 `
 const TransactionPa=styled.div`
     display: flex;
@@ -146,7 +148,9 @@ const CenterWrapper=styled.div`
 const SideWrapper=styled.div`
     display: flex;
     justify-content: space-between;
-
+    background-color:${(props)=>
+        props.color?(props.color):("#8C11BE")
+    };
 
 `
 const H1Wrapper=styled.h1`
@@ -158,4 +162,4 @@ const H1Wrapper=styled.h1`
     color: #FFFFFF;
 `
 
-export {Input,Button,P,Center,H1,BigButton,Side,Transaction}
+export {Input,Button,P,Center,H1,BigButton,Side,Transaction,TransactionP}
