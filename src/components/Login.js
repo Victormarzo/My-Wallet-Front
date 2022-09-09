@@ -10,21 +10,23 @@ export default function Login(){
     return(<>
         <Center>
             <LogoWrapper src={Logo} alt="logo"></LogoWrapper>
-        </Center>
+        
         <Input
             placeholder="E-mail"
             required
+            type="email"
             value={email}    
             onChange={e=>setEmail(e.target.value)}
         ></Input>
         <Input
             placeholder="Senha"
             required
+            type="password"
             value={password}
             onChange={e=>setPassword(e.target.value)}
         ></Input>
         <Button>Entrar</Button>
-        <Center>
+        
             <P>Primeira vez? Cadastre-se!</P>
         </Center>
         

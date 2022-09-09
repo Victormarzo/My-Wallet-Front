@@ -13,7 +13,7 @@ return(
     <>
         <Center>
             <LogoWrapper src={Logo} alt="logo">
-        </LogoWrapper></Center>
+        </LogoWrapper>
         <Input
             placeholder="Nome"
             required
@@ -22,6 +22,7 @@ return(
         ></Input>
         <Input
             placeholder="E-mail"
+            type="email"
             required
             value={email}
             onChange={e=>setEmail(e.target.value)}
@@ -29,17 +30,19 @@ return(
         <Input
             placeholder="Senha"
             required
+            type="password"
             value={password}
             onChange={e=>setPassword(e.target.value)}
         ></Input>
         <Input
             placeholder="Confirme a senha"
             required
+            type="password"
             value={repeatPassword}
             onChange={e=>setRepeatPassword(e.target.value)}
         ></Input>
         <Button>Cadastrar</Button>
-        <Center>
+        
             <P>Já tem uma conta? Entre agora!</P>
         </Center>
         

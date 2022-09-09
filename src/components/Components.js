@@ -25,6 +25,50 @@ function H1({children}){
         <H1Wrapper>{children}</H1Wrapper>
     )
 }
+function BigButton({children}){
+    return(
+        <BigButtonWrapper>{children}</BigButtonWrapper>
+    )
+    
+}
+function Side({children}){
+    return(
+    <SideWrapper>{children}</SideWrapper>
+    )
+}
+function Transaction({operation,description,value,date}){
+    return(
+    <TransactionPa>
+        <div>
+    <TransactionP color='#C6C6C6'>{date}</TransactionP>
+    <TransactionP color='#000000'>{description}</TransactionP>
+    </div>
+    <TransactionP type={operation}>{value}</TransactionP>
+
+
+    </TransactionPa>)
+}
+const TransactionP=styled.p`
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    background-color: #FFFFFF;
+    color:${(props)=>
+        props.color?(props.color):(props.type?("#03AC00"):("#C70000"))
+    };
+    margin-right: 12px;
+`
+const TransactionPa=styled.div`
+    display: flex;
+    background-color: #FFFFFF;
+    justify-content: space-between;
+    div{
+        display: flex;
+        background-color: #FFFFFF;
+    }
+`
 
 const InputWrapper =styled.input`
     width: 326px;
@@ -57,6 +101,33 @@ const ButtonWrapper =styled.button`
     border: 0;
     margin-bottom:35px;
 `
+const BigButtonWrapper = styled.button`
+    width: 155px;
+    height: 114px;
+    border-radius: 5px;
+    background-color: #A328D6;
+    border: 0;
+    position: relative;
+    p{
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 17px;
+        line-height: 20px;
+        color: #FFFFFF;
+        background-color: #A328D6;
+        position: absolute;
+        bottom:10px;
+        left:10px;
+    }
+    img{
+        position: absolute;
+        background-color: #A328D6;
+        top:10px;
+        left:10px;
+    }
+
+`
 const PWrapper=styled.p`
     font-family: 'Raleway';
     font-style: normal;
@@ -67,8 +138,15 @@ const PWrapper=styled.p`
 `
 const CenterWrapper=styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+`
+const SideWrapper=styled.div`
+    display: flex;
+    justify-content: space-between;
+
 
 `
 const H1Wrapper=styled.h1`
@@ -80,4 +158,4 @@ const H1Wrapper=styled.h1`
     color: #FFFFFF;
 `
 
-export {Input,Button,P,Center}
+export {Input,Button,P,Center,H1,BigButton,Side,Transaction}
