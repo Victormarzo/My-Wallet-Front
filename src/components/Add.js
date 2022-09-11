@@ -1,13 +1,19 @@
 import { Input,Button,H1,Center} from "./Components";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import {newTransaction} from "../services/mywallet.js"
 import { useNavigate } from "react-router-dom";
+import UserContext from "../contexts/User.context";
 
-export default function Add({type}){
-    let operation;
+export default function Add(){
     
-    type==='positive'?(operation='entrada'):(operation='saida')
+    const {type}=useContext(UserContext);
+    
+    let operation;
+    let operationName;
+    
+    type==='positive'?(operation='positive'):(operation='negative')
+    operation==='positive'?(operationName='entrada'):(operationName='saída')
 
     const[value,setValue]=useState('');
     const[description,setDescription]=useState('');
@@ -28,9 +34,10 @@ export default function Add({type}){
             alert("Digite um valor válido")
         }
         let body={operation,value:newValue,description};
+        
         newTransaction(body)
     .then((answer)=>{
-        alert("bora dormi")
+    
         navigate('/home');
 
     })
@@ -41,7 +48,7 @@ export default function Add({type}){
     }
    return(
      <form onSubmit={addTransaction}>
-        <H1>Nova {operation}</H1>
+        <H1>Nova {operationName}</H1>
         <Space></Space>
         <Input 
             placeholder="Valor"
@@ -53,7 +60,7 @@ export default function Add({type}){
             required
             value={description}    
             onChange={e=>setDescription(e.target.value)}></Input>
-        <Button>Salvar {operation}</Button>
+        <Button>Salvar {operationName}</Button>
     </form>
    )
 }

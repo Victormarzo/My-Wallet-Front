@@ -25,9 +25,9 @@ function H1({children}){
         <H1Wrapper>{children}</H1Wrapper>
     )
 }
-function BigButton({children}){
+function BigButton({children,onClick}){
     return(
-        <BigButtonWrapper>{children}</BigButtonWrapper>
+        <BigButtonWrapper onClick={onClick}>{children}</BigButtonWrapper>
     )
     
 }

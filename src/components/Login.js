@@ -18,6 +18,7 @@ function Login(e){
         const name=answer.data.name;
         const authJSON =JSON.stringify({token:token,name:name});
         localStorage.setItem('mywallet',authJSON)
+        
         navigate('/home');
 
     })

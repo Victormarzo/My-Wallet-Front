@@ -4,19 +4,34 @@ const BASE_URL = "http://localhost:5000";
 
 function postSignUp(body){
     const promise=axios.post(`${BASE_URL}/signup`,body);
-    console.log('chegou aqui')
     return promise;
 }
 function postLogin(body){
+    
     const promise=axios.post(`${BASE_URL}/`,body);
-    console.log('chegou aqui2')
-    return promise;
+     return promise;
 }
 
 function newTransaction(body){
-    const promise=axios.post(`${BASE_URL}/add`,body);
-    console.log('chegou aqui3')
+    const config=createHeaders();
+    const promise=axios.post(`${BASE_URL}/add`,body,config);
+    
     return promise;
 }
 
-export {postSignUp,postLogin,newTransaction}
+function getTransactions(){
+    const config=createHeaders();
+    const promise=axios.get(`${BASE_URL}/home`,config);
+    return promise;
+
+}
+function createHeaders(){
+    const auth=JSON.parse(localStorage.getItem('mywallet'));
+    const config={
+        headers:{
+            Authorization:`Bearer ${auth.token}`
+    }};
+    return config;
+}
+
+export {postSignUp,postLogin,newTransaction,getTransactions}
