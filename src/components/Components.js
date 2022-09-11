@@ -43,6 +43,7 @@ function Transaction({obj}){
     <TransactionPa>
         <div>
     <TransactionP color='#C6C6C6'>{date}</TransactionP>
+    <Space></Space>
     <TransactionP color='#000000'>{description}</TransactionP>
     </div>
     <TransactionP type={operation}>{value}</TransactionP>
@@ -50,6 +51,10 @@ function Transaction({obj}){
 
     </TransactionPa>)
 }
+const Space=styled.div`
+width: 10px;
+`
+
 
 const TransactionP=styled.p`
     font-family: 'Raleway';
@@ -59,7 +64,7 @@ const TransactionP=styled.p`
     line-height: 23px;
     background-color: #FFFFFF;
     color:${(props)=>
-        props.color?(props.color):(props.type?("#03AC00"):("#C70000"))
+        props.color?(props.color):(props.type==='positive'?("#03AC00"):("#C70000"))
     };
     
 `

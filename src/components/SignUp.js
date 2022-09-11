@@ -2,27 +2,31 @@ import { useState } from "react";
 import { Input,Button,P,Center} from "./Components";
 import Logo from "../assets/img/Logo.svg";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
+import {postSignUp} from "../services/mywallet.js"
+
 
 export default function SignUp(){
     const[email,setEmail]=useState('');
     const[password,setPassword]=useState('');
     const[name,setName]=useState('');
     const[repeatPassword,setRepeatPassword]=useState('');
-
+    const navigate=useNavigate();
     function Sign(e){
         e.preventDefault();
         if(password!=repeatPassword){
             alert ("As senhas não coincidem")
             setPassword('');
-            setRepeatPassword('')
+            setRepeatPassword('');
+            return;
         }
         let body={email,password,name}
-        console.log(body)
-    }   
-    
-
-
+        postSignUp(body)
+        .then(navigate('/'))
+       .catch((answer)=>{
+        console.log(answer)
+    })
+}
 
 return(
     <form onSubmit={Sign}>

@@ -1,20 +1,43 @@
 import { Input,Button,H1,Center} from "./Components";
 import { useState } from "react";
 import styled from "styled-components";
-import dayjs from "dayjs";
+import {newTransaction} from "../services/mywallet.js"
+import { useNavigate } from "react-router-dom";
 
-export default function Add({type=true}){
+export default function Add({type}){
     let operation;
     
-    type?(operation='entrada'):(operation='saida')
+    type==='positive'?(operation='entrada'):(operation='saida')
 
     const[value,setValue]=useState('');
     const[description,setDescription]=useState('');
-
+    const navigate=useNavigate();
+    function k(i) {
+        let newValue = i.replace(/\D/g,'');
+        newValue = (newValue/100).toFixed(2) + '';
+        newValue = newValue.replace(".", ",");
+        newValue = newValue.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+        newValue = newValue.replace(/(\d)(\d{3}),/g, "$1.$2,");
+        return newValue;
+    }
     function addTransaction(e){
         e.preventDefault();
-        let body={operation,value,description,date:`${dayjs().date()}/${dayjs().month()}`};
-        console.log(body)
+        
+        let newValue=value.replace('.','').replace(',','.');
+        if (newValue==='0.00'){
+            alert("Digite um valor válido")
+        }
+        let body={operation,value:newValue,description};
+        newTransaction(body)
+    .then((answer)=>{
+        alert("bora dormi")
+        navigate('/home');
+
+    })
+    .catch((answer)=>{
+        console.log(answer);
+
+    });
     }
    return(
      <form onSubmit={addTransaction}>
@@ -24,7 +47,7 @@ export default function Add({type=true}){
             placeholder="Valor"
             required
             value={value}    
-            onChange={e=>setValue(e.target.value)}></Input>
+            onChange={e=>{setValue(k(e.target.value))}}></Input>
         <Input 
             placeholder="Descrição"
             required

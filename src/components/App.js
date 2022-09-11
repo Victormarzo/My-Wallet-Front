@@ -4,8 +4,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import Home from "./Home";
 import Add from "./Add";
-
-
+import PrivatePage from "./PrivatePage";
 
 export default function App(){
 
@@ -16,14 +15,9 @@ export default function App(){
         <Routes>
           <Route path="/" element={<Login/>}/>
           <Route path="/signup" element={<SignUp/>}/>
-          <Route path="/home" element={<Home/>}/>
-          <Route path="/add" element={<Add/>}/>
+          <Route path="/home" element={<PrivatePage><Home/></PrivatePage>}/>
+          <Route path="/add" element={<PrivatePage><Add/></PrivatePage>}/>
         </Routes> 
     </BrowserRouter>
   )
 }
-/*
-
-<Route path="/income" element={<Income/>}/>
-<Route path="/outcome" element={<Outcome/>}/>
-*/

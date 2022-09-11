@@ -3,24 +3,28 @@ import Exit from "../assets/img/Exit.svg";
 import Plus from "../assets/img/Plus.svg";
 import Minus from "../assets/img/Minus.svg";
 import styled from "styled-components";
+
 export default function Home(){
+
+const localName=JSON.parse(localStorage.getItem('mywallet'));
+const name=localName.name;
 
 const provisorisa=[]
 const provisoria=[
 {
     date:"14/01",
-    operation:true,
-    value:"25,00",
+    operation:'positive',
+    value:"25,02",
     description:"pix" 
 },{
     date:"14/01",
-    operation:false,
+    operation:'negative',
     value:"30,00",
     description:"pizza"
 },  {
     date:"14/01",
-    operation:true,
-    value:"245,00",
+    operation:'positive',
+    value:"2452,00",
     description:"pix" 
 }
 
@@ -28,24 +32,23 @@ const provisoria=[
 function result(){
     let obj= {}
     let sum=0;
-    provisoria.forEach(value=>{
-        if(value.operation===true){
-            console.log(value.operation,value.value)
-            sum+=Number(value.value.replace(',','.'))
+    provisoria.forEach(transaction=>{
+        if(transaction.operation==='positive'){
+            sum+=Number(transaction.value.replace(',','.'))
         }else{
-            console.log(value.operation,value.value)
-            sum-=Number(value.value.replace(',','.'))
+            sum-=Number(transaction.value.replace(',','.'))
         }
     })
+    
     if (sum>0){
         obj={
-            sum,
-            operation:'true'
+            soma:sum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').replace('.','x').replace(',','.').replace('x',','),
+            operation:'positive'
         }
     }else{
         obj={
             sum,
-            operation:'false'
+            operation:'negative'
         }
     }
 
@@ -57,7 +60,7 @@ let res=result();
 return(
 <>
 <Side>
-<H1>Ola Vitao</H1>
+<H1>Ola {name}</H1>
 <img src={Exit} alt="exit"></img>
 </Side>
 <Center>
@@ -72,7 +75,7 @@ return(
                     <Balance>
                         <Side color={'#FFFFFF'}>
                             <h1>SALDO</h1>
-                            <TransactionP type={res.operation}>{res.sum}</TransactionP>
+                            <TransactionP type={res.operation}>{res.soma}</TransactionP>
                         </Side>
                     </Balance>
                     
