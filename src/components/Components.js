@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import styled from "styled-components";
 
 function Input({...otherProps}){
@@ -5,11 +6,24 @@ function Input({...otherProps}){
         <InputWrapper {...otherProps}></InputWrapper>
     )
 }
+
+function AddInput ({...otherProps}){
+    return(
+        <AddInputWrapper{...otherProps}></AddInputWrapper>
+    )
+}
 function Button({children}){
     return(
         <ButtonWrapper>{children}</ButtonWrapper>
     )
 }
+
+function AddButton ({children}){
+    return(
+        <AddButtonWrapper>{children}</AddButtonWrapper>
+    )
+}
+
 function P({children}){
     return(
         <PWrapper>{children}</PWrapper>
@@ -25,36 +39,87 @@ function H1({children}){
         <H1Wrapper>{children}</H1Wrapper>
     )
 }
-function BigButton({children,onClick}){
+function BigButton({children,onClick,icon}){
     return(
-        <BigButtonWrapper onClick={onClick}>{children}</BigButtonWrapper>
+        <BigButtonWrapper  onClick={onClick}>
+           <div>
+           {icon}
+           </div>
+           <div>
+           {children}
+           </div>
+        
+        </BigButtonWrapper>
     )
     
 }
+
+function Month({children,onClick}){
+    return(
+        <MonthWrapper onClick={onClick}>
+            {children}
+        </MonthWrapper>
+    )
+}
+
 function Side({children,color}){
     return(
     <SideWrapper color={color}>{children}</SideWrapper>
     )
 }
-function Transaction({obj}){
-    let {operation,description,value,date}=obj
-
+function Transaction({obj,onClick}){
+    let {operation,description,amount,createdAt}=obj
+    const newAmount=((amount/100).toFixed(2)).toString().replace('.', ',')
     return(
     <TransactionPa>
         <div>
-    <TransactionP color='#C6C6C6'>{date}</TransactionP>
-    <Space></Space>
-    <TransactionP color='#000000'>{description}</TransactionP>
-    </div>
-    <TransactionP type={operation}>{value}</TransactionP>
-
-
+            <TransactionP color='#C6C6C6'>{dayjs(createdAt).format('DD/MM')}</TransactionP>
+            <Space></Space>
+            <TransactionP onClick={onClick} color='#000000'>{description}</TransactionP>
+         </div>
+        <TransactionP type={operation}>{newAmount}</TransactionP>
     </TransactionPa>)
 }
-const Space=styled.div`
-width: 10px;
-`
 
+const BigButtonWrapper = styled.div`
+    width: 155px;
+    height: 114px;
+    border-radius: 5px;
+    background-color: #A328D6;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    position: relative;
+    display:flex;
+    justify-content:space-around;
+    flex-direction:column;
+    padding-left:10px;
+    p{
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 17px;
+        line-height: 20px;
+        color: #FFFFFF;
+        background-color: #A328D6;
+        position: absolute;
+        bottom:10px;
+        left:10px;
+    }
+   
+
+`
+const Space=styled.div`
+    width: 12px;
+`
+const MonthWrapper=styled.div`
+    display: flex;
+    justify-content: center;    
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color:white;
+    width:60px;
+    
+`;
 
 const TransactionP=styled.p`
     font-family: 'Raleway';
@@ -64,7 +129,7 @@ const TransactionP=styled.p`
     line-height: 23px;
     background-color: #FFFFFF;
     color:${(props)=>
-        props.color?(props.color):(props.type==='positive'?("#03AC00"):("#C70000"))
+        props.color?(props.color):(props.type==='POSITIVE'?("#03AC00"):("#C70000"))
     };
     
 `
@@ -109,33 +174,15 @@ const ButtonWrapper =styled.button`
     border: 0;
     margin-bottom:35px;
 `
-const BigButtonWrapper = styled.button`
-    width: 155px;
-    height: 114px;
-    border-radius: 5px;
-    background-color: #A328D6;
-    border: 0;
-    position: relative;
-    p{
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 17px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background-color: #A328D6;
-        position: absolute;
-        bottom:10px;
-        left:10px;
-    }
-    img{
-        position: absolute;
-        background-color: #A328D6;
-        top:10px;
-        left:10px;
-    }
+const AddButtonWrapper = styled(ButtonWrapper)`
+    width:100%;
+    
+`;
 
-`
+const AddInputWrapper = styled(Input)`
+    width:100%;
+`;
+
 const PWrapper=styled.p`
     font-family: 'Raleway';
     font-style: normal;
@@ -154,6 +201,7 @@ const CenterWrapper=styled.div`
 const SideWrapper=styled.div`
     display: flex;
     justify-content: space-between;
+    align-items:center;
     background-color:${(props)=>
         props.color?(props.color):("#8C11BE")
     };
@@ -168,4 +216,4 @@ const H1Wrapper=styled.h1`
     color: #FFFFFF;
 `
 
-export {Input,Button,P,Center,H1,BigButton,Side,Transaction,TransactionP}
+export {Month,Input,Button,P,Center,H1,BigButton,Side,Transaction,TransactionP,AddButton,AddInput}

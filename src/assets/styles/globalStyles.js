@@ -35,6 +35,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	padding: 24px;
+	background-color: #8C11BE;
 }
 ol, ul {
 	list-style: none;
@@ -56,7 +57,7 @@ a{
 }
 *{
     box-sizing: border-box;
-	background-color: #8C11BE;
+	
 }
 
 
