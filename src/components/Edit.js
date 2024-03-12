@@ -28,7 +28,6 @@ export default function Edit() {
             alert("Digite um valor válido")
         }
         let body = { operation: data.operation, amount: newValue, description,id:data.id };
-        console.log(body)
         editTransaction(body)
             .then(() => {
                 navigate('/home');

@@ -11,7 +11,6 @@ export default function Add() {
     const navigate = useNavigate();
     const location=useLocation();
     const operationData = location.state;
-    console.log(operationData)
     function k(i) {
         let newValue = i.replace(/\D/g, '');
         newValue = (newValue / 100).toFixed(2) + '';
