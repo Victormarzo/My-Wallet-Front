@@ -7,19 +7,19 @@ import Add from "./Add";
 import PrivatePage from "./PrivatePage";
 import Edit from "./Edit"
 
-export default function App(){
+export default function App() {
 
-  return(
+  return (
     <BrowserRouter>
-      <GlobalStyle/>   
-        <Routes>
-          <Route path="/" element={<Login/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
-          <Route path="/home" element={<PrivatePage><Home/></PrivatePage>}/>
-          <Route path="/add" element={<PrivatePage><Add/></PrivatePage>}/>
-          <Route path="/edit" element={<PrivatePage><Edit/></PrivatePage>}/>
+      <GlobalStyle />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/home" element={<PrivatePage><Home /></PrivatePage>} />
+        <Route path="/add" element={<PrivatePage><Add /></PrivatePage>} />
+        <Route path="/edit" element={<PrivatePage><Edit /></PrivatePage>} />
 
-        </Routes> 
+      </Routes>
     </BrowserRouter>
   )
 }

@@ -1,91 +1,94 @@
 import dayjs from "dayjs";
 import styled from "styled-components";
 
-function Input({...otherProps}){
-    return(
+function Input({ ...otherProps }) {
+    return (
         <InputWrapper {...otherProps}></InputWrapper>
     )
 }
 
-function AddInput ({...otherProps}){
-    return(
+function AddInput({ ...otherProps }) {
+    return (
         <AddInputWrapper{...otherProps}></AddInputWrapper>
     )
 }
-function Button({children}){
-    return(
+function Button({ children }) {
+    return (
         <ButtonWrapper>{children}</ButtonWrapper>
     )
 }
 
-function AddButton ({children}){
-    return(
+function AddButton({ children }) {
+    return (
         <AddButtonWrapper>{children}</AddButtonWrapper>
     )
 }
 
-function P({children}){
-    return(
+function P({ children }) {
+    return (
         <PWrapper>{children}</PWrapper>
     )
 }
-function Center({children}){
-    return(
+function Center({ children }) {
+    return (
         <CenterWrapper>{children}</CenterWrapper>
-        )
+    )
 }
-function H1({children}){
-    return(
+function H1({ children }) {
+    return (
         <H1Wrapper>{children}</H1Wrapper>
     )
 }
-function BigButton({children,onClick,icon}){
-    return(
-        <BigButtonWrapper  onClick={onClick}>
-           <div>
-           {icon}
-           </div>
-           <div>
-           {children}
-           </div>
-        
+function BigButton({ children, onClick, icon }) {
+    return (
+        <BigButtonWrapper onClick={onClick}>
+            <div>
+                {icon}
+            </div>
+            <div>
+                {children}
+            </div>
         </BigButtonWrapper>
     )
-    
 }
 
-function Month({children,onClick}){
-    return(
+function Month({ children, onClick }) {
+    return (
         <MonthWrapper onClick={onClick}>
             {children}
         </MonthWrapper>
     )
 }
 
-function Side({children,color}){
-    return(
-    <SideWrapper color={color}>{children}</SideWrapper>
+function Side({ children, color }) {
+    return (
+        <   SideWrapper color={color}>{children}</SideWrapper>
     )
 }
-function Transaction({obj,onClick}){
-    let {operation,description,amount,createdAt}=obj
-    const newAmount=((amount/100).toFixed(2)).toString().replace('.', ',')
-    return(
-    <TransactionPa>
-        <div>
-            <TransactionP color='#C6C6C6'>{dayjs(createdAt).format('DD/MM')}</TransactionP>
-            <Space></Space>
-            <TransactionP onClick={onClick} color='#000000'>{description}</TransactionP>
-         </div>
-        <TransactionP type={operation}>{newAmount}</TransactionP>
-    </TransactionPa>)
+function Transaction({ obj, onClick, remove }) {
+    let { operation, description, amount, date } = obj
+    const newAmount = ((amount / 100).toFixed(2)).toString().replace('.', ',')
+    return (
+        <TransactionPa>
+            <div>
+                <TransactionP color='#C6C6C6'>{dayjs(date).format('DD/MM')}</TransactionP>
+                <Space />
+                <TransactionP onClick={onClick} color='#000000'>{description}</TransactionP>
+            </div>
+            <div>
+                <TransactionP type={operation}>{newAmount}</TransactionP>
+                <Space />
+                <TransactionP onClick={remove} color='#C6C6C6'>X</TransactionP>
+            </div>
+
+        </TransactionPa>)
 }
 
 const BigButtonWrapper = styled.div`
     width: 155px;
     height: 114px;
     border-radius: 5px;
-    background-color: #A328D6;
+    background-color: #FE4155;
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
     position: relative;
     display:flex;
@@ -99,7 +102,7 @@ const BigButtonWrapper = styled.div`
         font-size: 17px;
         line-height: 20px;
         color: #FFFFFF;
-        background-color: #A328D6;
+        background-color: #FE4155;
         position: absolute;
         bottom:10px;
         left:10px;
@@ -107,10 +110,10 @@ const BigButtonWrapper = styled.div`
    
 
 `
-const Space=styled.div`
+const Space = styled.div`
     width: 12px;
 `
-const MonthWrapper=styled.div`
+const MonthWrapper = styled.div`
     display: flex;
     justify-content: center;    
     font-weight: 400;
@@ -121,19 +124,19 @@ const MonthWrapper=styled.div`
     
 `;
 
-const TransactionP=styled.p`
+const TransactionP = styled.p`
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
     background-color: #FFFFFF;
-    color:${(props)=>
-        props.color?(props.color):(props.type==='POSITIVE'?("#03AC00"):("#C70000"))
+    color:${(props) =>
+        props.color ? (props.color) : (props.type === 'POSITIVE' ? ("#24967F") : ("#C63A54"))
     };
     
 `
-const TransactionPa=styled.div`
+const TransactionPa = styled.div`
     display: flex;
     background-color: #FFFFFF;
     justify-content: space-between;
@@ -143,7 +146,7 @@ const TransactionPa=styled.div`
     }
 `
 
-const InputWrapper =styled.input`
+const InputWrapper = styled.input`
     width: 326px;
     height: 58px;
     background: #FFFFFF;
@@ -155,12 +158,13 @@ const InputWrapper =styled.input`
     line-height: 23px;    
     color: #000000;
     margin-bottom: 13px;
+    padding:10px;
     
 `
-const ButtonWrapper =styled.button`
+const ButtonWrapper = styled.button`
     width: 326px;
     height: 46px;
-    background-color: #A328D6;
+    background-color: #FE4155;
     border-radius: 5px;
     font-family: 'Raleway';
     font-style: normal;
@@ -181,9 +185,10 @@ const AddButtonWrapper = styled(ButtonWrapper)`
 
 const AddInputWrapper = styled(Input)`
     width:100%;
+    padding:10px;
 `;
 
-const PWrapper=styled.p`
+const PWrapper = styled.p`
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
@@ -191,23 +196,23 @@ const PWrapper=styled.p`
     line-height: 20px;
     color: #FFFFFF;
 `
-const CenterWrapper=styled.div`
+const CenterWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    position:relative;
 `
-const SideWrapper=styled.div`
+const SideWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items:center;
-    background-color:${(props)=>
-        props.color?(props.color):("#8C11BE")
+    
+    background-color:${(props) =>
+        props.color ? (props.color) : ("#2D1925")
     };
-
 `
-const H1Wrapper=styled.h1`
+const H1Wrapper = styled.h1`
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
@@ -216,4 +221,4 @@ const H1Wrapper=styled.h1`
     color: #FFFFFF;
 `
 
-export {Month,Input,Button,P,Center,H1,BigButton,Side,Transaction,TransactionP,AddButton,AddInput}
+export { Month, Input, Button, P, Center, H1, BigButton, Side, Transaction, TransactionP, AddButton, AddInput }

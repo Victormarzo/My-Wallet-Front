@@ -1,4 +1,5 @@
-import ReactDom from 'react-dom';
 import App from './components/App';
-
-ReactDom.render(<App/>,document.querySelector('.root'));
+import { createRoot } from 'react-dom/client'
+const container = document.getElementById('root');
+const root = createRoot(container)
+root.render(<App tab="home" />)

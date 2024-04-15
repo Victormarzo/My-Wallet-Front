@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle=createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -35,7 +35,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	padding: 24px;
-	background-color: #8C11BE;
+	background-color: #2D1925;
 }
 ol, ul {
 	list-style: none;
