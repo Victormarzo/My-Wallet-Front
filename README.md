@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# My Wallet - front
+Front-end for My Wallet, an individual expenses control solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+My wallet is a web browser application that you can use to control your expenses and check your monthly balance
 
-## Available Scripts
+### How to run for development
 
-In the project directory, you can run:
+1. Clone this repository
+2. Install all dependencies
 
-### `npm start`
+```bash
+npm i
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. Populate `.env.development` file based on `.env.example`. `REACT_APP_API_BASE_URL` should point to your API server 
+4. Create and populate the database
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm run dev:migration:generate
+```
+5. Use the seed account or create a new
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Screenshot from 2024-04-15 18-39-05](https://github.com/Victormarzo/My-Wallet-Front/assets/106850140/d3cb20ae-1584-4e7d-a30d-1ff3fcd05fd2)
+![Screenshot from 2024-04-15 18-39-19](https://github.com/Victormarzo/My-Wallet-Front/assets/106850140/3b5163be-6d9f-4beb-a01f-f18cd62b37b4)
+![Screenshot from 2024-04-15 18-40-04](https://github.com/Victormarzo/My-Wallet-Front/assets/106850140/759f836f-c20b-47f6-bae4-0f326e71fc26)
+![Screenshot from 2024-04-15 18-41-28](https://github.com/Victormarzo/My-Wallet-Front/assets/106850140/34a7bb92-2cdb-4837-87e3-2ad646236127)
+![Screenshot from 2024-04-15 18-40-37](https://github.com/Victormarzo/My-Wallet-Front/assets/106850140/deb83ee3-98d6-4ff8-b24f-79e3e7fc1483)
+![Screenshot from 2024-04-15 21-21-33](https://github.com/Victormarzo/My-Wallet-Front/assets/106850140/10730902-2226-4b44-b0a8-d68cf6e2430e)
